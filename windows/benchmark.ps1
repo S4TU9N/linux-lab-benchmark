@@ -3,10 +3,10 @@
 
 $ErrorActionPreference = "Continue"
 
-$osName = "Windows 11"
 $timestamp = Get-Date -Format "yyyy-MM-dd HH:mm:ss"
 $computer = Get-CimInstance Win32_ComputerSystem
 $os = Get-CimInstance Win32_OperatingSystem
+$osName = $os.Caption	
 $cpu = Get-CimInstance Win32_Processor | Select-Object -First 1
 $gpu = Get-CimInstance Win32_VideoController |
     Where-Object { $_.Name -notmatch "Microsoft Basic Display Adapter" } |
